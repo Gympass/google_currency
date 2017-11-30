@@ -152,9 +152,7 @@ class Money
         agent = Mechanize.new
         agent.user_agent_alias = "Windows Chrome"
 
-        agent.get("https://www.google.com/finance/converter")
-        page = agent.page
-
+        agent.get("https://#{SERVICE_HOST}#{SERVICE_PATH}")
         agent.page.form['from'] = from.iso_code
         agent.page.form['to'] = to.iso_code
         result_page = agent.page.form.submit
